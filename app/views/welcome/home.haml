@@ -1,0 +1,17 @@
+.container 
+  .row.justify-content-center
+    .col-md-4.mt-5
+      = link_to "nuevo cliente", new_customer_path,class:"btn btn-primary"
+      %table.table.mt-5
+        %thead
+          %th Nombre
+          %th RFC
+          %th Telefono
+          %th
+        %tbody
+          -@customers.each do |customer|
+            %tr
+              %td= customer.name
+              %td= customer.rfc
+              %td= customer.telephone_number
+              %td= link_to "editar cliente", edit_customer_path(customer)

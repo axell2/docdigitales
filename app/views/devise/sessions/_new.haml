@@ -1,0 +1,15 @@
+%h2 Inicio de sesion
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control',placeholder:'email'
+  .field
+    %br/
+    = f.password_field :password, autocomplete: "current-password",class:'form-control',placeholder:'email'
+  - if devise_mapping.rememberable?
+    .field
+      = f.check_box :remember_me
+      = f.label :remember_me
+  .actions
+    = f.submit "inicia sesion",class:'btn btn-primary'
+
+= render "devise/shared/links"

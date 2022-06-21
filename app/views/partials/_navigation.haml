@@ -1,0 +1,20 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    %a.navbar-brand{:href => "#"} docDigitales
+    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      %ul.navbar-nav
+        %li.nav-item
+          -if user_signed_in?
+            = link_to "Home", authenticated_path,class:'nav-link'
+          -else
+            = link_to "Home", unauthenticated_path,class:'nav-link'
+        %li.nav-item
+          - if user_signed_in?
+            = link_to "Cerrar sesion", destroy_user_session_path, method: :delete,class:'nav-link'
+          - else
+            = link_to "Iniciar sesion", new_user_session_path,class:'nav-link'
+            
+         
+         

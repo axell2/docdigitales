@@ -1,0 +1,28 @@
+.container
+  .row.justify-content-center
+    .col-md-4.mt-5
+      %h2 Registrate
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          %br/
+          = f.text_field :enterprice, autofocus: true, autocomplete: "enterprice",placeholder:"Empresa",required:true,class:'form-control'
+
+        .field
+          %br/
+          = f.text_field :rfc, autofocus: true, autocomplete: "rfc",placeholder:"RFC",required:true,class:'form-control'
+        .field
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",required:true,class:'form-control'
+        .field
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password",placeholder:"Contraseña",required:true,class:'form-control'
+        .field
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Confirme contraseña",required:true,class:'form-control'
+        .actions.mt-5
+          = f.submit "Registrate",class:'btn btn-primary'
+      = render "devise/shared/links"
